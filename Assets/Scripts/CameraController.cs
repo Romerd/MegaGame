@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public Vector3 offSet;
     public bool useOffsetValues;
     public float rotateSpeed;
+    public Transform pivot;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,11 @@ public class CameraController : MonoBehaviour
 
         if (!useOffsetValues)
         {
-            offSet = target.position - transform.position;
+            offSet = target.position - transform.position;//transform.position -locate the GameObject in 3D world space
         }
 
-
+        pivot.transform.position = target.transform.position;
+        pivot.transform.parent = target.transform;
 
     }
 
@@ -30,10 +32,11 @@ public class CameraController : MonoBehaviour
         float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
         target.Rotate(0,horizontal, 0);
 
+        //Get the y position of the mouse & rotate the Pivot
         float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
-        target.Rotate(-vertical, 0, 0);
+        pivot.Rotate(-vertical, 0, 0);
         
-            //Move the camera based on the current rotation of the rarget & the original offset
+        //Move the camera based on the current rotation of the target & the original offset
         float desiredYAngle = target.eulerAngles.y;
         float desiredXAngle = target.eulerAngles.x;
         Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
