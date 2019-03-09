@@ -9,14 +9,20 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public CharacterController controller;
     public float gravityScale;
+    public float rotSpeed;
+    private float rot = 0f;
 
-    private Vector3 moveDirection;
+    public Animator anim;
+
+
+    private Vector3 moveDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         //theRB = GetComponent<Rigidbody>();
         controller = GetComponent <CharacterController>() ;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,13 +49,72 @@ public class PlayerController : MonoBehaviour
         {
             //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
 
+            if (Input.GetKey (KeyCode.W))
+            {
+                anim.SetInteger("condition", 1);
+
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    anim.SetInteger("condition", 2);
+                }
+
+                if (Input.GetMouseButton(0))
+                {
+                    anim.SetInteger("condition", 4);
+                }
+                //moveDirection = new Vector3(0, 0, 1);
+                //moveDirection *= moveSpeed;
+                //moveDirection = transform.TransformDirection(moveDirection);
+            }
+
+            if (Input.GetKey (KeyCode.Mouse0))
+            {
+                anim.SetInteger("condition", 2);
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                anim.SetInteger("condition", 4);
+            }
+
+            if (Input.GetKey (KeyCode.F))
+            {
+                anim.SetInteger("condition", 3);
+            }
+
+            if (Input.GetKeyUp (KeyCode.F))
+            {
+                anim.SetInteger("condition", 0);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                anim.SetInteger("condition", 0);
+            }
+
+            if (Input.GetKeyUp (KeyCode.Mouse0))
+            {
+                anim.SetInteger("condition", 0);
+            }
+
+            if (Input.GetKeyUp (KeyCode.W))
+            {
+                anim.SetInteger("condition", 0);
+                //moveDirection = new Vector3(0, 0, 0);
+            }
+
+
             moveDirection.y = 0f;
             if (Input.GetButtonDown("Jump")) //Проверяем на нажатие кнопки
             {
                 moveDirection.y = jumpForce;
             }
+
+
         }
 
+        //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+        //transform.eulerAngles = new Vector3(0, rot, 0);
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);// * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
