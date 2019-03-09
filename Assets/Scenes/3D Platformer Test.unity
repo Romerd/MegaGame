@@ -717,7 +717,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092200800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -788,6 +788,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   gravityScale: 0.15
   rotSpeed: 0
+  anim: {fileID: 0}
 --- !u!95 &1092200807
 Animator:
   serializedVersion: 3
@@ -797,8 +798,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092200800}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2eb65326874c74461a0f72597fbbc88e, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 4e841b578b59e804a991af4be87f46fe, type: 3}
+  m_Controller: {fileID: 9100000, guid: e0b4a9c7acb38a64a9fbc9008e85198e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1010,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771539243664184, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.78
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4771539243664184, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1050,15 +1051,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771539243664184, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.75441
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4771539243664184, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0064291
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4771539243664184, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1443588
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 95602941718411856, guid: d74065821b27d6d40a655c384e9faf2a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 64430158276844176, guid: d74065821b27d6d40a655c384e9faf2a,
         type: 3}
@@ -1085,7 +1091,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.0131
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95602941718411856, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d74065821b27d6d40a655c384e9faf2a, type: 3}
 --- !u!1 &1238914047
 GameObject:
