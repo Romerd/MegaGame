@@ -788,7 +788,6 @@ MonoBehaviour:
   controller: {fileID: 0}
   gravityScale: 0.15
   rotSpeed: 0
-  anim: {fileID: 0}
 --- !u!95 &1092200807
 Animator:
   serializedVersion: 3
